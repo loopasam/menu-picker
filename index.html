@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fff8ec" />
+    <title>Menu Picker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">My weekly menu</p>
+          <h1>What should we eat?</h1>
+          <p class="intro">Drag food onto a day, or tap a food and then tap a day.</p>
+        </div>
+        <button class="reset-button" id="reset-week" type="button">New week</button>
+      </header>
+
+      <section class="week-section" aria-labelledby="week-title">
+        <div class="section-heading">
+          <div>
+            <p class="step-number" aria-hidden="true">1</p>
+            <h2 id="week-title">Your week</h2>
+          </div>
+          <p>Drop as many foods as you like.</p>
+        </div>
+
+        <div class="week-board" id="week-board">
+          <article class="day-card day-card--monday" data-day="monday">
+            <header><span aria-hidden="true">🌤️</span><h3>Monday</h3></header>
+            <div class="day-list" aria-label="Monday menu"></div>
+          </article>
+          <article class="day-card day-card--tuesday" data-day="tuesday">
+            <header><span aria-hidden="true">🪁</span><h3>Tuesday</h3></header>
+            <div class="day-list" aria-label="Tuesday menu"></div>
+          </article>
+          <article class="day-card day-card--wednesday" data-day="wednesday">
+            <header><span aria-hidden="true">🌈</span><h3>Wednesday</h3></header>
+            <div class="day-list" aria-label="Wednesday menu"></div>
+          </article>
+          <article class="day-card day-card--thursday" data-day="thursday">
+            <header><span aria-hidden="true">🦋</span><h3>Thursday</h3></header>
+            <div class="day-list" aria-label="Thursday menu"></div>
+          </article>
+          <article class="day-card day-card--friday" data-day="friday">
+            <header><span aria-hidden="true">⭐</span><h3>Friday</h3></header>
+            <div class="day-list" aria-label="Friday menu"></div>
+          </article>
+          <article class="day-card day-card--saturday" data-day="saturday">
+            <header><span aria-hidden="true">🎈</span><h3>Saturday</h3></header>
+            <div class="day-list" aria-label="Saturday menu"></div>
+          </article>
+          <article class="day-card day-card--sunday" data-day="sunday">
+            <header><span aria-hidden="true">☀️</span><h3>Sunday</h3></header>
+            <div class="day-list" aria-label="Sunday menu"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="food-section" aria-labelledby="food-title">
+        <div class="section-heading">
+          <div>
+            <p class="step-number" aria-hidden="true">2</p>
+            <h2 id="food-title">Food shelf</h2>
+          </div>
+          <p id="selection-message" aria-live="polite">Pick something delicious.</p>
+        </div>
+
+        <div class="food-shelf" id="food-shelf" aria-label="Foods to choose from"></div>
+      </section>
+    </main>
+
+    <template id="food-card-template">
+      <button class="food-card food-card--palette" type="button">
+        <span class="food-card__emoji" aria-hidden="true"></span>
+        <span class="food-card__label"></span>
+      </button>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
