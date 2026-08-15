@@ -1,22 +1,30 @@
 const FOODS = [
-  { id: "burger", label: "Burger", emoji: "🍔" },
-  { id: "fries", label: "Fries", emoji: "🍟" },
-  { id: "pizza", label: "Pizza", emoji: "🍕" },
-  { id: "pasta", label: "Pasta", emoji: "🍝" },
-  { id: "rice", label: "Rice", emoji: "🍚" },
-  { id: "chicken", label: "Chicken", emoji: "🍗" },
-  { id: "fish", label: "Fish", emoji: "🐟" },
-  { id: "egg", label: "Egg", emoji: "🍳" },
-  { id: "cucumber", label: "Cucumber", emoji: "🥒" },
-  { id: "green-beans", label: "Green beans", emoji: "🫛" },
-  { id: "carrot", label: "Carrot", emoji: "🥕" },
-  { id: "broccoli", label: "Broccoli", emoji: "🥦" },
-  { id: "salad", label: "Salad", emoji: "🥗" },
-  { id: "soup", label: "Soup", emoji: "🥣" },
-  { id: "taco", label: "Taco", emoji: "🌮" },
-  { id: "pancakes", label: "Pancakes", emoji: "🥞" },
-  { id: "apple", label: "Apple", emoji: "🍎" },
-  { id: "strawberry", label: "Strawberry", emoji: "🍓" },
+  { id: "cucumber", label: "Cucumber", emoji: "🥒", group: "veggies" },
+  { id: "green-beans", label: "Green beans", emoji: "🫛", group: "veggies" },
+  { id: "carrot", label: "Carrot", emoji: "🥕", group: "veggies" },
+  { id: "broccoli", label: "Broccoli", emoji: "🥦", group: "veggies" },
+  { id: "salad", label: "Salad", emoji: "🥗", group: "veggies" },
+  { id: "chicken", label: "Chicken", emoji: "🍗", group: "protein" },
+  { id: "fish", label: "Fish", emoji: "🐟", group: "protein" },
+  { id: "egg", label: "Egg", emoji: "🍳", group: "protein" },
+  { id: "fries", label: "Fries", emoji: "🍟", group: "carbs" },
+  { id: "pasta", label: "Pasta", emoji: "🍝", group: "carbs" },
+  { id: "rice", label: "Rice", emoji: "🍚", group: "carbs" },
+  { id: "pancakes", label: "Pancakes", emoji: "🥞", group: "carbs" },
+  { id: "burger", label: "Burger", emoji: "🍔", group: "meals" },
+  { id: "pizza", label: "Pizza", emoji: "🍕", group: "meals" },
+  { id: "soup", label: "Soup", emoji: "🥣", group: "meals" },
+  { id: "taco", label: "Taco", emoji: "🌮", group: "meals" },
+  { id: "apple", label: "Apple", emoji: "🍎", group: "fruit" },
+  { id: "strawberry", label: "Strawberry", emoji: "🍓", group: "fruit" },
+];
+
+const FOOD_GROUPS = [
+  { id: "veggies", label: "Veggies", emoji: "🥦", hint: "Fill the plate" },
+  { id: "protein", label: "Protein", emoji: "🍳", hint: "Helps us grow" },
+  { id: "carbs", label: "Carbs", emoji: "🍚", hint: "Energy foods" },
+  { id: "meals", label: "Meals", emoji: "🍽️", hint: "All-in-one favorites" },
+  { id: "fruit", label: "Fruit", emoji: "🍓", hint: "Something fresh" },
 ];
 
 const STORAGE_KEY = "menu-picker.week.v1";
@@ -85,7 +93,34 @@ function normalizeDroppedCard(card) {
 
 function renderFoodShelf() {
   const fragment = document.createDocumentFragment();
-  FOODS.forEach((food) => fragment.append(makePaletteCard(food)));
+
+  FOOD_GROUPS.forEach((group) => {
+    const groupSection = document.createElement("section");
+    groupSection.className = `food-group food-group--${group.id}`;
+    groupSection.dataset.foodGroup = group.id;
+
+    const header = document.createElement("header");
+    header.className = "food-group__header";
+    header.innerHTML = `
+      <span class="food-group__emoji" aria-hidden="true">${group.emoji}</span>
+      <div>
+        <h3>${group.label}</h3>
+        <p>${group.hint}</p>
+      </div>
+    `;
+
+    const items = document.createElement("div");
+    items.className = "food-group__items";
+    items.setAttribute("aria-label", `${group.label} foods`);
+
+    FOODS.filter((food) => food.group === group.id).forEach((food) => {
+      items.append(makePaletteCard(food));
+    });
+
+    groupSection.append(header, items);
+    fragment.append(groupSection);
+  });
+
   foodShelf.append(fragment);
 }
 
@@ -103,7 +138,7 @@ function selectFood(foodId) {
   if (selectedFoodId) {
     selectionMessage.textContent = `${foodById.get(selectedFoodId).label} selected — now tap a day.`;
   } else {
-    selectionMessage.textContent = "Pick something delicious.";
+    selectionMessage.textContent = "Choose from every food group.";
   }
 }
 
@@ -163,15 +198,17 @@ function initializeDragging() {
     return;
   }
 
-  Sortable.create(foodShelf, {
-    group: { name: "weekly-menu", pull: "clone", put: false },
-    sort: false,
-    animation: 170,
-    fallbackOnBody: true,
-    fallbackTolerance: 4,
-    ghostClass: "sortable-ghost",
-    chosenClass: "sortable-chosen",
-    dragClass: "sortable-drag",
+  document.querySelectorAll(".food-group__items").forEach((groupItems) => {
+    Sortable.create(groupItems, {
+      group: { name: "weekly-menu", pull: "clone", put: false },
+      sort: false,
+      animation: 170,
+      fallbackOnBody: true,
+      fallbackTolerance: 4,
+      ghostClass: "sortable-ghost",
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+    });
   });
 
   dayLists.forEach((dayList) => {
