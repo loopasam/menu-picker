@@ -79,6 +79,14 @@ h1 {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
 }
 
+.header-actions {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.print-button,
 .reset-button {
   flex: 0 0 auto;
   padding: 12px 18px;
@@ -88,6 +96,20 @@ h1 {
   background: transparent;
   font-weight: 900;
   cursor: pointer;
+}
+
+.print-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: white;
+  background: #28323f;
+}
+
+.print-button:hover,
+.print-button:focus-visible {
+  color: #28323f;
+  background: #fff;
 }
 
 .reset-button:hover,
@@ -394,6 +416,11 @@ h1 {
     align-items: flex-start;
   }
 
+  .header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .intro {
     max-width: 25rem;
   }
@@ -417,6 +444,138 @@ h1 {
   }
 }
 
+@page {
+  size: A4 landscape;
+  margin: 10mm;
+}
+
+@media print {
+  :root {
+    color: #28323f;
+    background: #fff;
+  }
+
+  *,
+  *::before,
+  *::after {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body {
+    min-width: 0;
+    min-height: 0;
+    background: #fff;
+  }
+
+  .app-shell {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .app-header {
+    margin-bottom: 5mm;
+  }
+
+  .app-header h1 {
+    margin-bottom: 0;
+    font-size: 24pt;
+  }
+
+  .eyebrow {
+    margin-bottom: 2mm;
+    font-size: 8pt;
+  }
+
+  .intro,
+  .header-actions,
+  .food-section,
+  .section-heading > p,
+  .step-number,
+  .food-card__remove {
+    display: none !important;
+  }
+
+  .week-section {
+    margin: 0;
+  }
+
+  .section-heading {
+    margin-bottom: 3mm;
+  }
+
+  .section-heading > div {
+    gap: 0;
+  }
+
+  .section-heading h2 {
+    font-size: 13pt;
+  }
+
+  .week-board {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 2.5mm;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .day-card {
+    min-height: 135mm;
+    overflow: visible;
+    border: 1pt solid rgb(40 50 63 / 20%);
+    border-radius: 4mm;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .day-card header {
+    min-height: 14mm;
+    gap: 1.5mm;
+    padding: 3mm 2.5mm;
+    border-bottom-width: 1pt;
+  }
+
+  .day-card header span {
+    font-size: 13pt;
+  }
+
+  .day-card h3 {
+    font-size: 9pt;
+  }
+
+  .day-list {
+    min-height: 120mm;
+    gap: 2mm;
+    padding: 2.5mm;
+  }
+
+  .day-list:empty::before {
+    min-height: 112mm;
+    border: 0;
+    color: rgb(40 50 63 / 40%);
+    content: "—";
+    font-size: 16pt;
+  }
+
+  .food-card--planned {
+    min-height: 12mm;
+    gap: 1.5mm;
+    padding: 2mm;
+    border-width: 1pt;
+    border-radius: 3mm;
+    box-shadow: none;
+  }
+
+  .food-card--planned .food-card__emoji {
+    font-size: 15pt;
+  }
+
+  .food-card--planned .food-card__label {
+    font-size: 7.5pt;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -426,3 +585,4 @@ h1 {
     animation-duration: 0.01ms !important;
   }
 }
+

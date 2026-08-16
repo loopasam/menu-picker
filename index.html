@@ -15,7 +15,13 @@
           <h1>What should we eat?</h1>
           <p class="intro">Drag food onto a day, or tap a food and then tap a day.</p>
         </div>
-        <button class="reset-button" id="reset-week" type="button">New week</button>
+        <div class="header-actions">
+          <button class="print-button" id="print-week" type="button">
+            <span aria-hidden="true">🖨️</span>
+            Print week
+          </button>
+          <button class="reset-button" id="reset-week" type="button">New week</button>
+        </div>
       </header>
 
       <section class="week-section" aria-labelledby="week-title">
@@ -83,3 +89,4 @@
     <script src="app.js"></script>
   </body>
 </html>
+

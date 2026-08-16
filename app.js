@@ -258,7 +258,9 @@ dayCards.forEach((dayCard) => {
 });
 
 document.querySelector("#reset-week").addEventListener("click", resetWeek);
+document.querySelector("#print-week").addEventListener("click", () => window.print());
 
 renderFoodShelf();
 loadWeek();
 initializeDragging();
+
