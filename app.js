@@ -263,4 +263,3 @@ document.querySelector("#print-week").addEventListener("click", () => window.pri
 renderFoodShelf();
 loadWeek();
 initializeDragging();
-

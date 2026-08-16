@@ -17,4 +17,3 @@ Open `index.html` directly, or serve the folder with any static web server.
 
 The site is designed to be published from the repository root with GitHub
 Pages.
-
