@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Raspberry">
+  <path fill="#4f9b45" d="M31 18c-8-8-15-7-20-4 5 8 12 11 20 8z"/>
+  <path fill="#67b957" d="M33 18c7-9 15-9 21-6-4 9-12 12-21 10z"/>
+  <path fill="#43883b" d="M29 7h6v14h-6z"/>
+  <g stroke="#9f1239" stroke-width="1.5">
+    <circle cx="24" cy="25" r="8" fill="#f43f5e"/>
+    <circle cx="40" cy="25" r="8" fill="#e11d48"/>
+    <circle cx="17" cy="36" r="8" fill="#e11d48"/>
+    <circle cx="32" cy="36" r="9" fill="#fb4f6d"/>
+    <circle cx="47" cy="36" r="8" fill="#d91443"/>
+    <circle cx="23" cy="49" r="8" fill="#d91443"/>
+    <circle cx="40" cy="49" r="8" fill="#c8103d"/>
+  </g>
+  <g fill="#ff8297" opacity=".75">
+    <circle cx="21" cy="22" r="2"/>
+    <circle cx="29" cy="32" r="2"/>
+    <circle cx="14" cy="33" r="2"/>
+    <circle cx="38" cy="22" r="2"/>
+    <circle cx="44" cy="33" r="2"/>
+    <circle cx="21" cy="46" r="2"/>
+  </g>
+</svg>

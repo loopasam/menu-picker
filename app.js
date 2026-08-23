@@ -6,15 +6,20 @@ const FOODS = [
   { id: "salad", label: "Salad", emoji: "🥗", group: "veggies" },
   { id: "peas", label: "Peas", emoji: "🟢", group: "veggies" },
   { id: "edamame", label: "Edamame", emoji: "🫛", group: "veggies" },
+  { id: "cherry-tomatoes", label: "Cherry tomatoes", emoji: "🍅🍅", group: "veggies" },
   { id: "chicken", label: "Chicken", emoji: "🍗", group: "protein" },
   { id: "fish", label: "Fish", emoji: "🐟", group: "protein" },
   { id: "egg", label: "Egg", emoji: "🍳", group: "protein" },
+  { id: "hot-dog", label: "Hot dog", emoji: "🌭", group: "protein" },
+  { id: "sausages", label: "Sausages", emoji: "🌭🌭", group: "protein" },
+  { id: "pork", label: "Pork", emoji: "🐷", group: "protein" },
   { id: "fries", label: "Fries", emoji: "🍟", group: "carbs" },
   { id: "pasta", label: "Pasta", emoji: "🍝", group: "carbs" },
   { id: "rice", label: "Rice", emoji: "🍚", group: "carbs" },
   { id: "pancakes", label: "Pancakes", emoji: "🥞", group: "carbs" },
   { id: "ebly", label: "Ebly", emoji: "🌾", group: "carbs" },
   { id: "couscous", label: "Couscous", emoji: "🥣", group: "carbs" },
+  { id: "rosti", label: "Rösti", emoji: "🥔", group: "carbs" },
   { id: "burger", label: "Burger", emoji: "🍔", group: "meals" },
   { id: "pizza", label: "Pizza", emoji: "🍕", group: "meals" },
   { id: "soup", label: "Soup", emoji: "🥣", group: "meals" },
@@ -22,10 +27,11 @@ const FOODS = [
   { id: "fried-rice", label: "Fried rice", emoji: "🍚", group: "meals" },
   { id: "apple", label: "Apple", emoji: "🍎", group: "fruit" },
   { id: "strawberry", label: "Strawberry", emoji: "🍓", group: "fruit" },
+  { id: "grapes", label: "Grapes", emoji: "🍇", group: "fruit" },
   { id: "melon", label: "Melon", emoji: "🍈", group: "fruit" },
   { id: "watermelon", label: "Watermelon", emoji: "🍉", group: "fruit" },
   { id: "blueberries", label: "Blueberries", emoji: "🫐", group: "fruit" },
-  { id: "raspberries", label: "Raspberries", emoji: "🍇", group: "fruit" },
+  { id: "raspberries", label: "Raspberries", icon: "raspberry.svg", group: "fruit" },
   { id: "peaches-nectarines", label: "Peaches / Nectarines", emoji: "🍑", group: "fruit" },
   { id: "banana", label: "Banana", emoji: "🍌", group: "fruit" },
   { id: "kiwi", label: "Kiwi", emoji: "🥝", group: "fruit" },
@@ -50,11 +56,24 @@ const dayLists = [...document.querySelectorAll(".day-list")];
 let selectedFoodId = null;
 let instanceCounter = 0;
 
+function setFoodIcon(container, food) {
+  if (!food.icon) {
+    container.textContent = food.emoji;
+    return;
+  }
+
+  const image = document.createElement("img");
+  image.src = food.icon;
+  image.alt = "";
+  image.draggable = false;
+  container.replaceChildren(image);
+}
+
 function makePaletteCard(food) {
   const card = foodTemplate.content.firstElementChild.cloneNode(true);
   card.dataset.foodId = food.id;
   card.setAttribute("aria-label", `Choose ${food.label}`);
-  card.querySelector(".food-card__emoji").textContent = food.emoji;
+  setFoodIcon(card.querySelector(".food-card__emoji"), food);
   card.querySelector(".food-card__label").textContent = food.label;
   card.addEventListener("click", () => selectFood(food.id));
   return card;
@@ -74,7 +93,7 @@ function makePlannedCard(foodId, instanceId = null) {
   const emoji = document.createElement("span");
   emoji.className = "food-card__emoji";
   emoji.setAttribute("aria-hidden", "true");
-  emoji.textContent = food.emoji;
+  setFoodIcon(emoji, food);
 
   const label = document.createElement("span");
   label.className = "food-card__label";

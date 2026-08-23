@@ -64,7 +64,7 @@ p {
 
 h1 {
   margin-bottom: 8px;
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
   line-height: 1;
   letter-spacing: -0.045em;
 }
@@ -344,6 +344,13 @@ h1 {
   line-height: 1;
 }
 
+.food-card__emoji img {
+  display: block;
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+}
+
 .food-card__label {
   font-size: 0.88rem;
   line-height: 1.1;
@@ -405,6 +412,177 @@ h1 {
 
 .sortable-chosen {
   border-color: #ff8a4c;
+}
+
+@media (min-width: 721px) {
+  .app-shell {
+    padding: 12px clamp(18px, 2vw, 30px);
+  }
+
+  .app-header {
+    margin-bottom: 14px;
+  }
+
+  .eyebrow {
+    margin-bottom: 3px;
+    font-size: 0.68rem;
+  }
+
+  h1 {
+    margin-bottom: 4px;
+    font-size: clamp(1.75rem, 2.6vw, 2.25rem);
+  }
+
+  .intro {
+    font-size: 0.9rem;
+  }
+
+  .print-button,
+  .reset-button {
+    padding: 9px 14px;
+    font-size: 0.84rem;
+  }
+
+  .week-section {
+    margin-bottom: 12px;
+  }
+
+  .food-section {
+    margin-bottom: 0;
+  }
+
+  .section-heading {
+    margin-bottom: 8px;
+  }
+
+  .section-heading h2 {
+    font-size: 1.05rem;
+  }
+
+  .section-heading > p {
+    font-size: 0.78rem;
+  }
+
+  .step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.78rem;
+  }
+
+  .week-board {
+    gap: 8px;
+    padding: 2px 2px 8px;
+  }
+
+  .day-card {
+    min-height: 174px;
+    border-radius: 18px;
+  }
+
+  .day-card header {
+    min-height: 44px;
+    gap: 5px;
+    padding: 8px 10px;
+  }
+
+  .day-card header span {
+    font-size: 1rem;
+  }
+
+  .day-card h3 {
+    font-size: 0.82rem;
+  }
+
+  .day-list {
+    min-height: 128px;
+    gap: 5px;
+    padding: 7px;
+  }
+
+  .day-list:empty::before {
+    min-height: 108px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+  }
+
+  .food-shelf {
+    gap: 8px;
+    padding: 8px;
+    border-radius: 20px;
+  }
+
+  .food-group {
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .food-group__header {
+    min-height: 36px;
+    margin-bottom: 5px;
+  }
+
+  .food-group__emoji {
+    font-size: 1.25rem;
+  }
+
+  .food-group__header h3 {
+    font-size: 0.82rem;
+  }
+
+  .food-group__header p {
+    font-size: 0.62rem;
+  }
+
+  .food-group__items {
+    gap: 5px;
+  }
+
+  .food-card--palette {
+    min-height: 40px;
+    flex-direction: row;
+    gap: 5px;
+    padding: 4px 5px;
+    border-radius: 11px;
+  }
+
+  .food-card--palette:hover,
+  .food-card--palette:focus-visible,
+  .food-card--palette.is-selected {
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 3px rgb(255 138 76 / 22%), 0 6px 12px rgb(74 58 39 / 10%);
+  }
+
+  .food-card--palette .food-card__emoji {
+    flex: 0 0 auto;
+    font-size: 1.3rem;
+  }
+
+  .food-card--palette .food-card__label {
+    font-size: 0.68rem;
+    text-align: left;
+  }
+
+  .food-card--planned {
+    min-height: 38px;
+    gap: 5px;
+    padding: 5px 30px 5px 7px;
+    border-radius: 10px;
+  }
+
+  .food-card--planned .food-card__emoji {
+    font-size: 1.2rem;
+  }
+
+  .food-card--planned .food-card__label {
+    font-size: 0.68rem;
+  }
+
+  .food-card__remove {
+    right: 4px;
+    width: 23px;
+    height: 23px;
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 720px) {
