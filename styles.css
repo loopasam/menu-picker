@@ -352,8 +352,11 @@ h1 {
 }
 
 .food-card__label {
+  min-width: 0;
+  max-width: 100%;
   font-size: 0.88rem;
   line-height: 1.1;
+  overflow-wrap: anywhere;
   text-align: center;
 }
 
@@ -558,7 +561,8 @@ h1 {
   }
 
   .food-card--palette .food-card__label {
-    font-size: 0.68rem;
+    font-size: 0.64rem;
+    overflow-wrap: normal;
     text-align: left;
   }
 
