@@ -5,32 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#fff8ec" />
     <title>Menu Picker</title>
-    <link rel="stylesheet" href="styles.css?v=20260823-3" />
+    <link rel="stylesheet" href="styles.css?v=20260823-4" />
   </head>
   <body>
     <main class="app-shell">
-      <header class="app-header">
-        <div>
-          <p class="eyebrow">My weekly menu</p>
-          <h1>What should we eat?</h1>
-          <p class="intro">Drag food onto a day, or tap a food and then tap a day.</p>
-        </div>
-        <div class="header-actions">
-          <button class="print-button" id="print-week" type="button">
-            <span aria-hidden="true">🖨️</span>
-            Print week
-          </button>
-          <button class="reset-button" id="reset-week" type="button">New week</button>
-        </div>
-      </header>
-
       <section class="week-section" aria-labelledby="week-title">
         <div class="section-heading">
           <div>
             <p class="step-number" aria-hidden="true">1</p>
             <h2 id="week-title">Your week</h2>
           </div>
-          <p>Drop as many foods as you like.</p>
+          <div class="header-actions">
+            <button class="print-button" id="print-week" type="button">
+              <span aria-hidden="true">🖨️</span>
+              Print
+            </button>
+            <button class="reset-button" id="reset-week" type="button">New week</button>
+          </div>
         </div>
 
         <div class="week-board" id="week-board">
@@ -86,6 +77,6 @@
     </template>
 
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
-    <script src="app.js?v=20260823-3"></script>
+    <script src="app.js?v=20260823-4"></script>
   </body>
 </html>
