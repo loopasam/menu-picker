@@ -42,12 +42,11 @@ const FOOD_GROUPS = [
   { id: "veggies", label: "Veggies", emoji: "🥦", hint: "Fill the plate" },
   { id: "protein", label: "Protein", emoji: "🍳", hint: "Helps us grow" },
   { id: "carbs", label: "Carbs", emoji: "🍚", hint: "Energy foods" },
-  { id: "meals", label: "Meals", emoji: "🍽️", hint: "All-in-one favorites" },
-  { id: "fruit", label: "Fruit", emoji: "🍓", hint: "Something fresh" },
 ];
 
 const STORAGE_KEY = "menu-picker.week.v1";
 const foodById = new Map(FOODS.map((food) => [food.id, food]));
+const enabledGroupIds = new Set(FOOD_GROUPS.map((group) => group.id));
 const legacyFoodIds = new Map([["peaches-nectarines", "peaches"]]);
 const foodShelf = document.querySelector("#food-shelf");
 const foodTemplate = document.querySelector("#food-card-template");
@@ -82,7 +81,7 @@ function makePaletteCard(food) {
 
 function makePlannedCard(foodId, instanceId = null) {
   const food = foodById.get(legacyFoodIds.get(foodId) || foodId);
-  if (!food) return null;
+  if (!food || !enabledGroupIds.has(food.group)) return null;
 
   const card = document.createElement("div");
   card.className = "food-card food-card--planned";
