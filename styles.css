@@ -501,11 +501,11 @@ h1 {
   }
 
   .food-card--palette {
-    min-height: 40px;
-    flex-direction: row;
-    gap: 5px;
-    padding: 4px 5px;
-    border-radius: 11px;
+    min-height: 82px;
+    flex-direction: column;
+    gap: 1px;
+    padding: 4px 5px 5px;
+    border-radius: 13px;
   }
 
   .food-card--palette:hover,
@@ -517,28 +517,29 @@ h1 {
 
   .food-card--palette .food-card__emoji {
     flex: 0 0 auto;
-    font-size: 1.3rem;
+    font-size: 3.5rem;
   }
 
   .food-card--palette .food-card__label {
-    font-size: 0.64rem;
+    font-size: 0.6rem;
+    line-height: 1;
     overflow-wrap: normal;
-    text-align: left;
+    text-align: center;
   }
 
   .food-card--planned {
-    min-height: 38px;
-    gap: 5px;
+    min-height: 48px;
+    gap: 3px;
     padding: 5px 30px 5px 7px;
     border-radius: 10px;
   }
 
   .food-card--planned .food-card__emoji {
-    font-size: 1.2rem;
+    font-size: 2.35rem;
   }
 
   .food-card--planned .food-card__label {
-    font-size: 0.68rem;
+    font-size: 0.58rem;
   }
 
   .food-card__remove {
@@ -581,7 +582,17 @@ h1 {
   }
 
   .food-card--palette {
-    min-height: 86px;
+    min-height: 112px;
+    gap: 2px;
+    padding: 7px 6px 8px;
+  }
+
+  .food-card--palette .food-card__emoji {
+    font-size: 4.6rem;
+  }
+
+  .food-card--palette .food-card__label {
+    font-size: 0.72rem;
   }
 }
 
